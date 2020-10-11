@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
 import { SecondaryContent } from './styles';
 
-const Button: React.FunctionComponent = ({ children }) => (
-	<SecondaryContent>{children}</SecondaryContent>
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button: React.FunctionComponent<ButtonProps> = ({
+	children,
+	...rest
+}) => (
+	<SecondaryContent type="button" {...rest}>
+		{children}
+	</SecondaryContent>
 );
 
 export default Button;

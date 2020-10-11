@@ -30,7 +30,7 @@ declare module 'styled-components' {
 			high: '0px 8px 16px rgba(0,0,0,0.24)';
 		};
 		rounded: {
-			max: '50px';
+			max: '50%';
 			8: '8px';
 			3: '3px';
 		};
