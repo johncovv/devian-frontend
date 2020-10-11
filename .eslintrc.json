@@ -29,14 +29,13 @@
 		"react-hooks/exhaustive-deps": "warn",
 		"react-hooks/rules-of-hooks": "error",
 		"react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+		"react/no-array-index-key": "off",
 		"import/prefer-default-export": "off",
-		// permite o uso do index na key do elemento ao renderizar dados de array
-		"no-unused-expressions": "off",
 		"react/require-default-props": "off",
 		"react/jsx-props-no-spreading": "off",
 		"jsx-a11y/media-has-caption": "off",
-		"react/prop-types": [2, { "ignore": ["children"] }],
-
+		// "react/prop-types": [2, { "ignore": ["children"] }],
+		"react/prop-types": "off",
 		"react/jsx-one-expression-per-line": "off",
 		"react/jsx-indent-props": ["error", "tab"],
 		"react/jsx-indent": ["error", "tab"],

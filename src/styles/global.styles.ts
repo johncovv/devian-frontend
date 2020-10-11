@@ -55,6 +55,7 @@ export default createGlobalStyle`
 
 		font-family: 'Whitney';
 		font-weight: 400;
+		line-height: 1.2;
 		font-size: ${(props) => props.theme.font[16]};
 		color: ${(props) => props.theme.colors.primary};
 		background-color: ${(props) => props.theme.background.ternary};
@@ -81,7 +82,6 @@ export default createGlobalStyle`
 
 	::-webkit-scrollbar-track {
 		background: ${(props) => props.theme.background.primary};
-		border-radius: 50px;
 	}
 
 	::-webkit-scrollbar-thumb {

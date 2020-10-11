@@ -103,4 +103,25 @@ export const CardDescription = styled.p`
 `;
 
 // COMMANDS
-export const CommandsGroupsContainer = styled.div``;
+export const CommandsGroupsContainer = styled.div`
+	min-height: 100vh;
+	width: 100%;
+
+	padding: 50px 15px;
+
+	display: grid;
+	grid-auto-rows: fit-content(60px);
+	gap: 25px;
+
+	justify-content: center;
+
+	@media (min-width: 768px) {
+		gap: 25px;
+		grid-template-columns: repeat(2, 354px);
+	}
+
+	@media (min-width: 1366px) {
+		gap: 50px;
+		grid-template-columns: repeat(3, 354px);
+	}
+`;
