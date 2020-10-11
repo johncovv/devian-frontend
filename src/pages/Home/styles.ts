@@ -57,7 +57,7 @@ export const CardBottom = styled.div`
 	align-items: center;
 	justify-content: space-between;
 
-	padding: 20px 15px;
+	padding: 15px;
 `;
 
 export const CardAvatar = styled.div`

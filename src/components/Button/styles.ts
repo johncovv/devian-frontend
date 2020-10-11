@@ -19,4 +19,8 @@ export const PrimaryContent = styled(Button)`
 export const SecondaryContent = styled(Button)`
 	background-color: transparent;
 	color: ${(props) => props.theme.colors.light};
+
+	&:hover {
+		text-decoration: underline;
+	}
 `;

@@ -80,7 +80,7 @@ export default createGlobalStyle`
 	}
 
 	::-webkit-scrollbar-track {
-		background: #2e3338;
+		background: ${(props) => props.theme.background.primary};
 		border-radius: 50px;
 	}
 
