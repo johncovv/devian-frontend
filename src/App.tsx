@@ -1,10 +1,18 @@
 import React from 'react';
 
+import Home from './pages/Home';
+
+// styles
+import ThemeStyled from './styles/Theme.styles';
+import GlobalStyle from './styles/global.styles';
+
 const App: React.FunctionComponent = () => {
 	return (
-		<div className="App">
-			<h1>Devian bot</h1>
-		</div>
+		<ThemeStyled>
+			<Home />
+
+			<GlobalStyle />
+		</ThemeStyled>
 	);
 };
 
