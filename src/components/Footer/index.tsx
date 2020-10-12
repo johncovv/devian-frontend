@@ -58,7 +58,7 @@ const Footer: React.FunctionComponent = () => {
 						<Option
 							href={`https://discord.com/oauth2/authorize?client_id=${clientId}&permissions=8&scope=bot`}
 						>
-							Baixar
+							Adicionar
 						</Option>
 					</Options>
 				</Section>
