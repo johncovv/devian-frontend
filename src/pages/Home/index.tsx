@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useRef } from 'react';
 
-// utils
+// utils, configs
 import { scrollToBottom } from '../../utils/scrollTo';
+import env from '../../config/enviroment';
 
 // components
 import Button from '../../components/Button/Primary';
@@ -96,6 +97,9 @@ const groups = [
 	},
 ];
 
+// enviroment
+const { clientId } = env;
+
 const Home: FunctionComponent = () => {
 	const CommandsGroup = useRef<HTMLDivElement>(null);
 
@@ -118,7 +122,12 @@ const Home: FunctionComponent = () => {
 						<GoToCommands onClick={() => scrollToBottom()}>
 							Ver comandos
 						</GoToCommands>
-						<Button>Continuar</Button>
+						<Button
+							link={`https://discord.com/oauth2/authorize?client_id=${clientId}&permissions=8&scope=bot`}
+							sameSite
+						>
+							Continuar
+						</Button>
 					</CardBottom>
 				</Card>
 			</Jumb>
