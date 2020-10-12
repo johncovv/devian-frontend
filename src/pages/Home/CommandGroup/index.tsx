@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, HtmlHTMLAttributes } from 'react';
 
 import { FiChevronDown } from 'react-icons/fi';
 
@@ -11,28 +11,27 @@ import {
 	CommandDescription,
 } from './styles';
 
-interface CommandGroupProps {
+interface CommandGroupProps extends HtmlHTMLAttributes<HTMLDivElement> {
 	group: string;
 	commands: { title: string; description: string }[];
+	position: number;
 }
 
 const CommandGroup: React.FunctionComponent<CommandGroupProps> = ({
 	group,
 	commands,
+	position,
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<Content>
-			<CommandGroupTitle
-				onClick={() => setIsOpen((state) => !state)}
-				className={isOpen ? 'active' : 'hidde'}
-			>
+		<Content isOpen={isOpen} style={{ zIndex: 100 - position }}>
+			<CommandGroupTitle onClick={() => setIsOpen((state) => !state)}>
 				{group} <FiChevronDown size={35} />
 			</CommandGroupTitle>
-			<CommandsContainer className={`${isOpen ? 'active' : 'hidde'}`}>
+			<CommandsContainer>
 				{commands.map(({ title, description }, index) => (
-					<Command key={`${title}-${index}`}>
+					<Command key={index}>
 						<CommandTitle>{title}</CommandTitle>
 						<CommandDescription>{description}</CommandDescription>
 					</Command>

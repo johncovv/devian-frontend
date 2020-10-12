@@ -1,18 +1,44 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Content = styled.div`
-	max-height: 427px;
+interface CommandGroupProps {
+	isOpen: boolean;
+}
+
+export const Content = styled.div<CommandGroupProps>`
+	position: relative;
+	max-height: 425px;
 	max-width: 354px;
 	width: 100%;
 	height: fit-content;
 
-	background-color: ${(props) => props.theme.background.secondary};
-	border-radius: ${(props) => props.theme.rounded[8]};
-
-	overflow: hidden;
-
 	display: flex;
 	flex-flow: column nowrap;
+
+	box-shadow: ${(props) => props.theme.boxShadow.high};
+
+	${(props) =>
+		props.isOpen
+			? css`
+					& > div:first-child {
+						border-top-right-radius: ${props.theme.rounded[8]};
+						border-top-left-radius: ${props.theme.rounded[8]};
+
+						svg {
+							transform: scaleY(-1);
+						}
+					}
+
+					& > div:last-child {
+						height: fit-content;
+						max-height: calc(425px - 60px);
+					}
+			  `
+			: css`
+					& > div:first-child {
+						border-radius: ${props.theme.rounded[8]};
+						transition: border-radius 200ms 200ms;
+					}
+			  `};
 `;
 
 export const CommandGroupTitle = styled.div`
@@ -35,12 +61,6 @@ export const CommandGroupTitle = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	&.active {
-		svg {
-			transform: rotate(-180deg);
-		}
-	}
-
 	svg {
 		position: absolute;
 		right: 15px;
@@ -50,21 +70,22 @@ export const CommandGroupTitle = styled.div`
 `;
 
 export const CommandsContainer = styled.div`
+	overflow-y: auto;
+	position: absolute;
 	width: 100%;
-	overflow-y: scroll;
+	left: 0;
+	right: 0;
+	top: 100%;
 
 	padding: 0 15px;
 
+	background-color: ${(props) => props.theme.background.secondary};
+	border-bottom-right-radius: ${(props) => props.theme.rounded[8]};
+	border-bottom-left-radius: ${(props) => props.theme.rounded[8]};
+	box-shadow: ${(props) => props.theme.boxShadow.high};
+
 	transition: max-height 200ms;
-
-	&.active {
-		height: calc(427px - 60px);
-		max-height: calc(427px - 60px);
-	}
-
-	&.hidde {
-		max-height: 0px;
-	}
+	max-height: 0px;
 `;
 
 export const Command = styled.div`

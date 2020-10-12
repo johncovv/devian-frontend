@@ -6,9 +6,11 @@ const theme = {
 	colors: {
 		primary: '#B9BBBE',
 		secondary: '#72767a',
+		dark: '#202225',
 		light: '#ffffff',
 		yellow: '#FFAC00',
 		green: '#43B581',
+		blue: '#7289DA',
 		link: '#289bee',
 		red: '#F04747',
 	},

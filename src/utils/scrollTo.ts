@@ -10,3 +10,10 @@ export const scrollToElement = (ref: React.RefObject<HTMLElement>): void => {
 		behavior: 'smooth',
 	});
 };
+
+export const scrollToBottom = (): void => {
+	window.scrollTo({
+		top: window.innerHeight,
+		behavior: 'smooth',
+	});
+};

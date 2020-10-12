@@ -1,9 +1,7 @@
 import React, { FunctionComponent, useRef } from 'react';
 
-import { FiChevronDown } from 'react-icons/fi';
-
 // utils
-import { scrollToElement } from '../../utils/scrollTo';
+import { scrollToBottom } from '../../utils/scrollTo';
 
 // components
 import Button from '../../components/Button/Primary';
@@ -25,19 +23,77 @@ import {
 	CardTitle,
 	CardDescription,
 	CommandsGroupsContainer,
+	DiscordIcon,
 } from './styles';
 
-const commands = [
-	{ title: 'help', description: 'return all commands' },
-	{ title: 'help', description: 'return all commands' },
+const groups = [
 	{
-		title: 'help',
-		description:
-			'return all commands.\nLorem ipsum dolor sit amet consectetur adipisicing elit. Optio, deserunt!',
+		group: 'music',
+		commands: [
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+			{
+				title: 'help',
+				description:
+					'return all commands.\nLorem ipsum dolor sit amet consectetur adipisicing elit. Optio, deserunt!',
+			},
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+		],
 	},
-	{ title: 'help', description: 'return all commands' },
-	{ title: 'help', description: 'return all commands' },
-	{ title: 'help', description: 'return all commands' },
+	{
+		group: 'music',
+		commands: [
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+			{
+				title: 'help',
+				description:
+					'return all commands.\nLorem ipsum dolor sit amet consectetur adipisicing elit. Optio, deserunt!',
+			},
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+		],
+	},
+	{
+		group: 'music',
+		commands: [
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+			{
+				title: 'help',
+				description:
+					'return all commands.\nLorem ipsum dolor sit amet consectetur adipisicing elit. Optio, deserunt!',
+			},
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+		],
+	},
+	{
+		group: 'music',
+		commands: [
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+			{
+				title: 'help',
+				description:
+					'return all commands.\nLorem ipsum dolor sit amet consectetur adipisicing elit. Optio, deserunt!',
+			},
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+		],
+	},
+	{
+		group: 'music',
+		commands: [
+			{ title: 'help', description: 'return all commands' },
+			{ title: 'help', description: 'return all commands' },
+		],
+	},
 ];
 
 const Home: FunctionComponent = () => {
@@ -46,6 +102,8 @@ const Home: FunctionComponent = () => {
 	return (
 		<MainContainer>
 			<Jumb>
+				<DiscordIcon />
+
 				<Card>
 					<CardContent>
 						<CardAvatar>
@@ -57,7 +115,7 @@ const Home: FunctionComponent = () => {
 						<CardDescription>Desenvolvimento e Administração.</CardDescription>
 					</CardContent>
 					<CardBottom>
-						<GoToCommands onClick={() => scrollToElement(CommandsGroup)}>
+						<GoToCommands onClick={() => scrollToBottom()}>
 							Ver comandos
 						</GoToCommands>
 						<Button>Continuar</Button>
@@ -65,9 +123,14 @@ const Home: FunctionComponent = () => {
 				</Card>
 			</Jumb>
 			<CommandsGroupsContainer ref={CommandsGroup}>
-				<CommandGroup group="music" commands={commands} />
-				<CommandGroup group="music" commands={commands} />
-				<CommandGroup group="music" commands={commands} />
+				{groups.map(({ group, commands }, index) => (
+					<CommandGroup
+						key={index}
+						group={group}
+						commands={commands}
+						position={index}
+					/>
+				))}
 			</CommandsGroupsContainer>
 		</MainContainer>
 	);

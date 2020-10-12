@@ -7,8 +7,6 @@ import WhitneySemiBold from '../assets/fonts/whitneysemibold.otf';
 import WhitneyBold from '../assets/fonts/whitneybold.otf';
 
 export default createGlobalStyle`
-	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
-
 	@font-face {
 		font-family: 'Whitney';
 		src: url('${WhitneyLight}') format('opentype');
@@ -53,7 +51,7 @@ export default createGlobalStyle`
 	body {
 		--webkit-font-smoothing: antialiased;
 
-		font-family: 'Whitney';
+		font-family: 'Whitney', 'Open Sans', sans-serif;
 		font-weight: 400;
 		line-height: 1.2;
 		font-size: ${(props) => props.theme.font[16]};
@@ -74,6 +72,14 @@ export default createGlobalStyle`
 	a {
 		text-decoration: none;
 		color: ${(props) => props.theme.colors.link};
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	a, button {
+		font-family: 'Whitney', 'Open Sans', sans-serif;
 	}
 
 	::-webkit-scrollbar {

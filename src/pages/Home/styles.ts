@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-import BackgroundImage from '../../assets/home/background.jpg';
+import BackgroundImage from '../../assets/art/home.jpg';
+
+import { ReactComponent as DiscordSvg } from '../../assets/global/discord-logo.svg';
 
 export const MainContainer = styled.div`
 	min-height: 100vh;
@@ -104,19 +106,24 @@ export const CardDescription = styled.p`
 
 // COMMANDS
 export const CommandsGroupsContainer = styled.div`
-	min-height: 100vh;
+	min-height: calc(100vh - 150px);
 	width: 100%;
 
 	padding: 50px 15px;
 
-	display: grid;
-	grid-auto-rows: fit-content(60px);
-	gap: 25px;
-
-	justify-content: center;
+	@media (max-width: 767px) {
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
+		row-gap: 15px;
+	}
 
 	@media (min-width: 768px) {
+		display: grid;
+		grid-auto-rows: fit-content(60px);
 		gap: 25px;
+		justify-content: center;
+
 		grid-template-columns: repeat(2, 354px);
 	}
 
@@ -124,4 +131,11 @@ export const CommandsGroupsContainer = styled.div`
 		gap: 50px;
 		grid-template-columns: repeat(3, 354px);
 	}
+`;
+
+export const DiscordIcon = styled(DiscordSvg)`
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	color: ${(props) => props.theme.colors.dark};
 `;
