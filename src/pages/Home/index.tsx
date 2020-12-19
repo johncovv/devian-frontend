@@ -1,4 +1,6 @@
-import React, { FunctionComponent, useRef } from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
+
+import api from '../../services/api.client';
 
 // utils, configs
 import { scrollToBottom } from '../../utils/scrollTo';
@@ -27,81 +29,28 @@ import {
 	DiscordIcon,
 } from './styles';
 
-const groups = [
-	{
-		group: 'music',
-		commands: [
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-			{
-				title: 'help',
-				description:
-					'return all commands.\nLorem ipsum dolor sit amet consectetur adipisicing elit. Optio, deserunt!',
-			},
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-		],
-	},
-	{
-		group: 'music',
-		commands: [
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-			{
-				title: 'help',
-				description:
-					'return all commands.\nLorem ipsum dolor sit amet consectetur adipisicing elit. Optio, deserunt!',
-			},
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-		],
-	},
-	{
-		group: 'music',
-		commands: [
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-			{
-				title: 'help',
-				description:
-					'return all commands.\nLorem ipsum dolor sit amet consectetur adipisicing elit. Optio, deserunt!',
-			},
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-		],
-	},
-	{
-		group: 'music',
-		commands: [
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-			{
-				title: 'help',
-				description:
-					'return all commands.\nLorem ipsum dolor sit amet consectetur adipisicing elit. Optio, deserunt!',
-			},
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-		],
-	},
-	{
-		group: 'music',
-		commands: [
-			{ title: 'help', description: 'return all commands' },
-			{ title: 'help', description: 'return all commands' },
-		],
-	},
-];
-
 // enviroment
 const { clientId } = env;
 
 const Home: FunctionComponent = () => {
 	const CommandsGroup = useRef<HTMLDivElement>(null);
+
+	const [commandsGroupList, setCommandsGroupList] = useState<
+		Array<DevianClient.CommandsGroupType>
+	>([] as Array<DevianClient.CommandsGroupType>);
+
+	useEffect(() => {
+		api
+			.get('/commands')
+			.then((response) => {
+				const commandsData = response.data as Array<
+					DevianClient.CommandsGroupType
+				>;
+
+				setCommandsGroupList(commandsData);
+			})
+			.catch((err) => console.error(err));
+	}, []);
 
 	return (
 		<MainContainer>
@@ -132,7 +81,7 @@ const Home: FunctionComponent = () => {
 				</Card>
 			</Jumb>
 			<CommandsGroupsContainer ref={CommandsGroup}>
-				{groups.map(({ group, commands }, index) => (
+				{commandsGroupList.map(({ group, commands }, index) => (
 					<CommandGroup
 						key={index}
 						group={group}

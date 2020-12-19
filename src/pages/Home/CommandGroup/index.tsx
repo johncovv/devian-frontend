@@ -1,4 +1,4 @@
-import React, { useState, HtmlHTMLAttributes } from 'react';
+import React, { useState } from 'react';
 
 import { FiChevronDown } from 'react-icons/fi';
 
@@ -11,9 +11,7 @@ import {
 	CommandDescription,
 } from './styles';
 
-interface CommandGroupProps extends HtmlHTMLAttributes<HTMLDivElement> {
-	group: string;
-	commands: { title: string; description: string }[];
+interface CommandGroupProps extends DevianClient.CommandsGroupType {
 	position: number;
 }
 
@@ -30,9 +28,9 @@ const CommandGroup: React.FunctionComponent<CommandGroupProps> = ({
 				{group} <FiChevronDown size={35} />
 			</CommandGroupTitle>
 			<CommandsContainer>
-				{commands.map(({ title, description }, index) => (
+				{commands.map(({ tag, description }, index) => (
 					<Command key={index}>
-						<CommandTitle>{title}</CommandTitle>
+						<CommandTitle>{tag}</CommandTitle>
 						<CommandDescription>{description}</CommandDescription>
 					</Command>
 				))}
